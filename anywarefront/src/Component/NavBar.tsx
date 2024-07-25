@@ -62,10 +62,11 @@ const Navbar =()=>{
     return(
         <AppBar position="sticky">
             <StyledToolbar>
-            <Typography variant="h6" sx={{display:{xs:"none",sm:"block"}}}>
+              
+            <Typography  variant="h6" sx={{display:{xs:"none",sm:"block"}}}>
             Welcom {username}
-                </Typography>
-                <Pets sx={{display:{xs:"block",sm:"none"}}}></Pets>
+                </Typography> 
+                <Typography sx={{display:{xs:"block",sm:"none"}}}>{username}</Typography>
                 <Search><InputBase placeholder="Search..."/></Search>
                 <Icons>
                     
@@ -77,11 +78,11 @@ const Navbar =()=>{
                     <Notifications />
                 </Badge>
 
-                <Avatar sx={{width:"30px" ,height:"30px"}}  onClick={e=>setOpen(true)}/>
+                <Avatar sx={{width:"30px" ,height:"30px"}}  onClick={e=>setOpen(true)} src="https://as2.ftcdn.net/v2/jpg/01/16/20/73/1000_F_116207330_1lS88P3GEoREbiakuFySP9woM4oK1ras.jpg"/>
 
                 </Icons>
                 <UserBox >
-                <Avatar sx={{width:"30px" ,height:"30px"}} onClick={e=>setOpen(true)}/>
+                <Avatar sx={{width:"30px" ,height:"30px"}} onClick={e=>setOpen(true)} src="https://as2.ftcdn.net/v2/jpg/01/16/20/73/1000_F_116207330_1lS88P3GEoREbiakuFySP9woM4oK1ras.jpg"/>
                 <Typography>Peter</Typography>
 
                 </UserBox>

@@ -30,7 +30,7 @@ function ExamTimeCom() {
       
     </CardContent>
     <CardActions >
-      <Button variant='contained'>
+      <Button variant='outlined'>
         View Tips
       </Button>
     </CardActions>

@@ -15,14 +15,21 @@ function AnnouncmentCom() {
 
       const Announ = (props:any) => {
         return(
-            <Box display='flex' justifyContent='start' alignItems='center' flexDirection='row' columnGap='1vw' >
+            <Box display='flex' justifyContent='start' alignItems='center' flexDirection='row' columnGap='1vw'    sx={{
+              bgcolor: 'rgba(0, 0, 0, 0.1)', // Semi-transparent white for the glass effect
+              backdropFilter: 'blur(10px)', // Blur effect
+              borderRadius: 2, // Rounded corners
+              padding: 2, // Padding inside the Box
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
+            }}
+          >
                 <Box sx={{width:'30%'}}>
                 
-                   <Box display='flex' flex='row' >      <Avatar sx={{width:"30px" ,height:"30px"}}/> <Typography sx={{fontStyle:'italic' , fontSize:'20px',marginLeft:'10px'}}>{props.announcement.doctor}</Typography> </Box>
-                   <Box> <Typography sx={{fontSize:'15px'}}>{props.announcement.event}</Typography> </Box>
+                   <Box display='flex' flex='row' >      <Avatar sx={{width:"30px" ,height:"30px"}} src="https://as2.ftcdn.net/v2/jpg/01/16/20/73/1000_F_116207330_1lS88P3GEoREbiakuFySP9woM4oK1ras.jpg"/> <Typography sx={{fontStyle:'italic' , fontSize:'20px',marginLeft:'10px'}}>{props.announcement.doctor}</Typography> </Box>
+                   <Box> <Typography sx={{fontSize:'15px',fontFamily:'serif' , marginLeft:5}}>{props.announcement.event}</Typography> </Box>
                    </Box>
                    <Divider orientation='vertical' flexItem/>
-                   <Box sx={{marginLeft:'1%'}}> {props.announcement.discussion} </Box> 
+                   <Box sx={{marginLeft:'1%'}}> <Typography sx={{fontSize:'18px',fontFamily:'serif' }}>{props.announcement.discussion}</Typography> </Box> 
 
                      </Box>
         )

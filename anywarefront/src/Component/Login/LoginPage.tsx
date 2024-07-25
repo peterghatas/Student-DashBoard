@@ -38,59 +38,73 @@ const Login: React.FC = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          marginTop: 8,
-        }}
-      >
-        <Typography component="h1" variant="h5">
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: 8,
+        bgcolor: 'rgba(0, 0, 0, 0.1)', // Darker and more opaque background
+        backdropFilter: 'blur(10px)', // Blur effect
+        borderRadius: 2, // Rounded corners
+        padding: 3, // Padding inside the Box
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.5)', // Darker shadow for depth
+      }}
+    >
+      <Typography component="h1" variant="h5">
+        Login
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          autoFocus
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          sx={{ mt: 3, mb: 2 }}
+        >
           Login
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Login
-          </Button>
-          {message && (
-            <Alert severity={message.includes('successful') ? 'success' : 'error'}>{message}</Alert>
-          )}
-        </Box>
+        </Button>
+        <Button
+          onClick={() => navigate('/')}
+          fullWidth
+          variant="outlined"
+          color="primary"
+          sx={{ mt: 1, mb: 1 }}
+        >
+          Back
+        </Button>
+        {message && (
+          <Alert severity={message.includes('successful') ? 'success' : 'error'}>{message}</Alert>
+        )}
       </Box>
-    </Container>
+    </Box>
+  </Container>
   );
 };
 

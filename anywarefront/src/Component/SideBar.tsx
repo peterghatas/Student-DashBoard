@@ -3,6 +3,9 @@ import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Switch
 import ArticleIcon from '@mui/icons-material/Article';
 import GroupIcon from '@mui/icons-material/Group';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import SchoolIcon from '@mui/icons-material/School';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import AnnouncementIcon from '@mui/icons-material/Announcement';
 
 import React from 'react'
 
@@ -37,7 +40,7 @@ function Sidebar() {
           <ListItem disablePadding   sx={{marginBottom: '10px', '&:hover': { backgroundColor: 'white','& .MuiListItemIcon-root, & .MuiListItemText-root': {color: 'black', },},}} >
             <ListItemButton component="a" href="#courses">
               <ListItemIcon>
-                <GroupIcon/>
+                <ArticleIcon/>
               </ListItemIcon>
               <ListItemText sx={{marginLeft:'-20px'}} primary="Courses" />
             </ListItemButton>
@@ -47,7 +50,7 @@ function Sidebar() {
           <ListItem disablePadding   sx={{marginBottom: '10px', '&:hover': { backgroundColor: 'white','& .MuiListItemIcon-root, & .MuiListItemText-root': {color: 'black', },},}} >
             <ListItemButton component="a" href="#gradeBook">
               <ListItemIcon>
-                <GroupIcon/>
+                <SchoolIcon/>
               </ListItemIcon>
               <ListItemText sx={{marginLeft:'-20px'}} primary="GradeBook" />
             </ListItemButton>
@@ -56,7 +59,7 @@ function Sidebar() {
           <ListItem disablePadding   sx={{marginBottom: '10px', '&:hover': { backgroundColor: 'white','& .MuiListItemIcon-root, & .MuiListItemText-root': {color: 'black', },},}} >
             <ListItemButton component="a" href="#preformance">
               <ListItemIcon>
-                <GroupIcon/>
+                <TrendingUpIcon/>
               </ListItemIcon>
               <ListItemText sx={{marginLeft:'-20px'}} primary="Preformance" />
             </ListItemButton>
@@ -66,7 +69,7 @@ function Sidebar() {
           <ListItem disablePadding   sx={{marginBottom: '10px', '&:hover': { backgroundColor: 'white','& .MuiListItemIcon-root, & .MuiListItemText-root': {color: 'black', },},}} >
             <ListItemButton component="a" href="#Announcement">
               <ListItemIcon>
-                <GroupIcon/>
+                <AnnouncementIcon/>
               </ListItemIcon>
               <ListItemText sx={{marginLeft:'-20px'}} primary="Announcement" />
             </ListItemButton>

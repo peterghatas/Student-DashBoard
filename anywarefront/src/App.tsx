@@ -2,9 +2,9 @@
 import './App.css';
 import {Routes,Route} from "react-router-dom"
 import  Dash  from './Component/DashBoard/Dash';
-import  Login  from './Component/Login/LoginPage';
-import Register from './Component/Register/Register';
-import  Home from './Component/Home/HomePage';
+import  Login  from './Component/Login/LoginContainer';
+import Register from './Component/Register/RegisterContainer';  
+import  HomeContainer from './Component/Home/HomeContainer';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ function App() {
        <Route path="/Dash" element={<Dash />} />
        <Route path="/login" element={<Login />} />
        <Route path="/register" element={<Register />} /> 
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<HomeContainer />} />
     </Routes>
   );
 }

@@ -18,7 +18,15 @@ function Quizes() {
       const Announ = (props:any) => {
         return(
             <Box display='flex' justifyContent='start' alignItems='center' flexDirection='row' columnGap='1vw' >
-        <Card sx={{ minWidth: 275 }}>
+        <Card sx={{
+         width: 300,
+          bgcolor: 'rgba(0, 0, 0, 0.09)', // Semi-transparent white for glass effect
+          backdropFilter: 'blur(10px)', // Blur effect
+          borderRadius: 2, // Rounded corners
+          padding: 2, // Padding inside the Card
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)', // Subtle shadow for depth
+        }}
+      >
         <CardContent>
           <Typography sx={{ mb: 3 }} variant="h5" component="div">
             {props.quiz.title}
