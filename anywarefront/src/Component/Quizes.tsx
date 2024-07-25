@@ -2,6 +2,7 @@ import { Box, Button, Card, CardActions, CardContent, Divider, Grid, Typography 
 import React, { useEffect, useState } from 'react'
 import { getAllAnnouncements } from '../API/Anouncments'
 import { getAllQuizesAPI } from '../API/Quizes';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 
 function Quizes() {
@@ -17,10 +18,11 @@ function Quizes() {
 
       const Announ = (props:any) => {
         return(
-            <Box display='flex' justifyContent='start' alignItems='center' flexDirection='row' columnGap='1vw' >
-        <Card sx={{
-         width: 300,
-          bgcolor: 'rgba(0, 0, 0, 0.09)', // Semi-transparent white for glass effect
+<Box display='flex' justifyContent='start' alignItems='center' flexDirection='row' columnGap='1vw'>
+      <Card
+        sx={{
+          width: 300,
+          bgcolor: 'rgba(0, 0, 0, 0.09)', // Semi-transparent black for glass effect
           backdropFilter: 'blur(10px)', // Blur effect
           borderRadius: 2, // Rounded corners
           padding: 2, // Padding inside the Card
@@ -29,24 +31,36 @@ function Quizes() {
       >
         <CardContent>
           <Typography sx={{ mb: 3 }} variant="h5" component="div">
-            {props.quiz.title}
+            <Box display='flex' flexDirection='row'>
+              <AssignmentIcon sx={{ marginTop: '8px' }} />
+              <Typography sx={{ mb: 0, fontFamily: 'serif', fontSize: '25px', marginLeft: 1 }} variant="h5">
+                {props.quiz.title}
+              </Typography>
+            </Box>
           </Typography>
           <Typography display='flex' flexDirection='row' sx={{ mb: 1.5 }} color="text.secondary">
-           <Typography width='65px'>Course: </Typography>   <Typography> {props.quiz.course}</Typography>
-          </Typography>
-          <Typography  display='flex' flexDirection='row' sx={{ mb: 1.5 }} color="text.secondary">
-          <Typography width='65px'> Topic: </Typography> <Typography> {props.quiz.topic}</Typography> 
+            <Typography width='65px'>Course: </Typography>
+            <Typography> {props.quiz.course}</Typography>
           </Typography>
           <Typography display='flex' flexDirection='row' sx={{ mb: 1.5 }} color="text.secondary">
-          <Typography width='65px'> Date:</Typography> <Typography>{props.quiz.date}</Typography> 
+            <Typography width='65px'>Topic: </Typography>
+            <Typography> {props.quiz.topic}</Typography>
+          </Typography>
+          <Typography display='flex' flexDirection='row' sx={{ mb: 1.5 }} color="text.secondary">
+            <Typography width='65px'>Date:</Typography>
+            <Typography>{props.quiz.date}</Typography>
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button variant="outlined" sx={{left:'30%'}}>Start {props.quiz.title} </Button>
+        <CardActions
+          sx={{
+            display: 'flex',
+            justifyContent: 'center', // Center the button horizontally
+          }}
+        >
+          <Button variant="outlined">Start {props.quiz.title}</Button>
         </CardActions>
       </Card>
-
-            </Box>
+    </Box>
         )
       }
 

@@ -51,7 +51,7 @@ export const register = async (req :Request, res:Response) => {
     try {
       const token = req.body.token
       const data=jwt.verify(token,secretKey)
-      console.log("444")
+      
       res.status(201).json(data)
     } catch (error) {
       res.status(500).json({ message: 'Error in token', error });
