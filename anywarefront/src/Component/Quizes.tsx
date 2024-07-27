@@ -1,27 +1,30 @@
 import { Box, Button, Card, CardActions, CardContent, Divider, Grid, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { getAllAnnouncements } from '../API/Anouncments'
-import { getAllQuizesAPI } from '../API/Quizes';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { fetchQuizes } from '../redux/slices/quizesSlice';
+import { RootState } from '../redux/store';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import { useEffect } from 'react';
 
 
 function Quizes() {
 
-    const[allQuizes,setAllQuizes]=useState([]);
+  const dispatch = useAppDispatch();
+  const { data: allQuizes, status, error } = useAppSelector((state: RootState) => state.quizes);
 
-  useEffect(()=>{
-      async function getQuizes(){
-        setAllQuizes(await getAllQuizesAPI())}
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchQuizes());
+    }
+  }, [status, dispatch]);
 
-        getQuizes();
-      },[])
+
 
       const Announ = (props:any) => {
         return(
 <Box display='flex' justifyContent='start' alignItems='center' flexDirection='row' columnGap='1vw'>
       <Card
         sx={{
-          width: 300,
+          width: 400,
           bgcolor: 'rgba(0, 0, 0, 0.09)', // Semi-transparent black for glass effect
           backdropFilter: 'blur(10px)', // Blur effect
           borderRadius: 2, // Rounded corners

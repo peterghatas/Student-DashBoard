@@ -83,7 +83,7 @@ const Navbar =()=>{
                 </Icons>
                 <UserBox >
                 <Avatar sx={{width:"30px" ,height:"30px"}} onClick={e=>setOpen(true)} src="https://as2.ftcdn.net/v2/jpg/01/16/20/73/1000_F_116207330_1lS88P3GEoREbiakuFySP9woM4oK1ras.jpg"/>
-                <Typography>Peter</Typography>
+                <Typography>{username}</Typography>
 
                 </UserBox>
 

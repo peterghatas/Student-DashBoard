@@ -1,13 +1,12 @@
-
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import {Routes,Route} from "react-router-dom"
-import  Dash  from './Component/DashBoard/Dash';
-import  Login  from './Component/Login/LoginContainer';
-import Register from './Component/Register/RegisterContainer';  
-import  HomeContainer from './Component/Home/HomeContainer';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Dash from './Component/DashBoard/Dash';
+import Login from './Component/Login/LoginContainer';
+import Register from './Component/Register/RegisterContainer';
+import HomeContainer from './Component/Home/HomeContainer';
 
 function App() {
   const navigate = useNavigate();
@@ -22,14 +21,16 @@ function App() {
     else
       navigate('/')
   },[])
-  return (
 
-    <Routes>
-       <Route path="/Dash" element={<Dash />} />
-       <Route path="/login" element={<Login />} />
-       <Route path="/register" element={<Register />} /> 
-      <Route path="/" element={<HomeContainer />} />
-    </Routes>
+  return (
+    <Provider store={store}>
+      <Routes>
+        <Route path="/Dash" element={<Dash />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<HomeContainer />} />
+      </Routes>
+    </Provider>
   );
 }
 

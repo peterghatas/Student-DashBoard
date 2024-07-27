@@ -7,18 +7,20 @@ import Quizes from './Quizes'
 function MainContent() {
     
   return (
-    <Box  display='flex' flex='row' sx={{width:'100%' }} justifyContent='space-between'>
-
-        <Box bgcolor='white' borderRadius='20px'  sx={{width:'60%' }} >
-        <AnnouncmentCom/>
+    <Box sx={{ padding: 2, bgcolor: '#EEEDEB' }}>
+    <Grid container spacing={2} justifyContent="center">
+      <Grid item xs={12} md={8}>
+        <Box bgcolor='white' borderRadius='20px' p={2} boxShadow={3}>
+          <AnnouncmentCom />
         </Box>
-
-        <Box bgcolor='white' borderRadius='20px' sx={{width:'25%'}}>
-          <Quizes/>
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <Box bgcolor='white' borderRadius='20px' p={2} boxShadow={3}>
+          <Quizes />
         </Box>
-
-
-    </Box>
+      </Grid>
+    </Grid>
+  </Box>
   )
 }
 

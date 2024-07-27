@@ -18,19 +18,6 @@ function Feed() {
 
       </Stack>
 
-
-     {/* <Grid  flex={10} bgcolor='grey' sx={{width:'60%'}}>
-        <Typography >Our Announcements</Typography>
-              {getAllAnnouncements.map((announcement: any)=>
-                <Grid display='flex' justifyContent='space-between' alignItems='center' >
-                   <Grid flex={4} sx={{borderRight:1 ,p:2}}> {announcement.doctor}</Grid>
-                   
-                   <Grid flex={8} sx={{p:2}}> {announcement.event} </Grid> 
-
-                     </Grid>)}
-          
-
-        </Grid> */}
     
     </Box>
   )
