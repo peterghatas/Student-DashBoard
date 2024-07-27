@@ -7,6 +7,8 @@ import Dash from './Component/DashBoard/Dash';
 import Login from './Component/Login/LoginContainer';
 import Register from './Component/Register/RegisterContainer';
 import HomeContainer from './Component/Home/HomeContainer';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
 
 function App() {
   const navigate = useNavigate();
@@ -23,14 +25,14 @@ function App() {
   },[])
 
   return (
-    <Provider store={store}>
+    
+      
       <Routes>
         <Route path="/Dash" element={<Dash />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<HomeContainer />} />
       </Routes>
-    </Provider>
   );
 }
 

@@ -1,0 +1,10 @@
+{
+    "login": "Login",
+    "email_address": "Email Address",
+    "password": "Password",
+    "back": "Back",
+    "login_success": "Login successful",
+    "login_failed": "Login failed: {{message}}",
+    "login_failed_unexpected": "Login failed: An unexpected error occurred"
+  }
+  

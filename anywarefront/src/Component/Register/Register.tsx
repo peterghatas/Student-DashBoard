@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Box, Button, Container, TextField, Typography, Alert } from '@mui/material';
-import {register} from '../../API/UserLogin';
-import { Navigate } from 'react-router-dom';
+import { register } from '../../API/UserLogin';
 import { useNavigate } from 'react-router-dom';
-
 
 const Register: React.FC = () => {
   const [name, setName] = useState('');
@@ -12,30 +10,34 @@ const Register: React.FC = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [emailError, setEmailError] = useState('');
 
-    const navigate = useNavigate();
-  
-    const handleLoginClick = () => {
-      navigate('/login');
-    };
-  
+  const navigate = useNavigate();
+
+  const validateEmail = (email: string) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    if (!validateEmail(email)) {
+      setEmailError('Invalid email address');
+      return;
+    }
 
     try {
       const response = await register(name, phone, email, password);
 
-      if(response.status==201){
+      if (response.status == 201) {
         setMessage('Registration successful');
         navigate('/login');
       }
-       // Perform additional actions like navigating to another page, etc.
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        // Axios error
         setMessage('Registration failed: ' + (error.response?.data || error.message));
       } else {
-        // Other errors
         setMessage('Registration failed: An unexpected error occurred');
       }
     }
@@ -44,18 +46,18 @@ const Register: React.FC = () => {
   return (
     <Container component="main" maxWidth="xs">
       <Box
- sx={{
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  marginTop: 8,
-  bgcolor: 'rgba(0, 0, 0, 0.1)', // Darker and more opaque background
-  backdropFilter: 'blur(10px)', // Blur effect
-  borderRadius: 2, // Rounded corners
-  padding: 3, // Padding inside the Box
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.5)', // Darker shadow for depth
-}}
->
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginTop: 8,
+          bgcolor: 'rgba(0, 0, 0, 0.1)', // Darker and more opaque background
+          backdropFilter: 'blur(10px)', // Blur effect
+          borderRadius: 2, // Rounded corners
+          padding: 3, // Padding inside the Box
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.5)', // Darker shadow for depth
+        }}
+      >
         <Typography component="h1" variant="h5">
           Register
         </Typography>
@@ -73,7 +75,7 @@ const Register: React.FC = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <TextField
+       <TextField
             variant="outlined"
             margin="normal"
             required
@@ -83,7 +85,12 @@ const Register: React.FC = () => {
             name="email"
             autoComplete="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value.toLowerCase()); // Convert email to lowercase
+              setEmailError('');
+            }}
+            error={!!emailError}
+            helperText={emailError}
           />
           <TextField
             variant="outlined"
