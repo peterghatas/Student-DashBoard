@@ -14,6 +14,7 @@ const StyledToolbar = styled(Toolbar)({
 
 const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("language");
     window.location.reload();
   };
 

@@ -5,6 +5,15 @@
     "back": "Back",
     "login_success": "Login successful",
     "login_failed": "Login failed: {{message}}",
-    "login_failed_unexpected": "Login failed: An unexpected error occurred"
+    "login_failed_unexpected": "Login failed: An unexpected error occurred",
+    "register": "Register",
+   "name": "Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "welcome": "Welcome",
+  "invalidEmail": "Invalid email address",
+  "registrationSuccess": "Registration successful",
+  "registrationFailed": "Registration failed",
+  "unexpectedError": "An unexpected error occurred"
   }
   

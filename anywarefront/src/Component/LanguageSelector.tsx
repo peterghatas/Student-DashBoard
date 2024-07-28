@@ -1,48 +1,28 @@
-import { Box, Button } from '@mui/material'
-import { useState } from 'react';
+// src/components/LanguageSelector.tsx
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
-const LanguagesButtons = () => {
+const LanguageSelector: React.FC = () => {
+  const { i18n } = useTranslation();
 
-    const { i18n } = useTranslation();
-
-    const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng);
-        document.body.setAttribute('dir', lng === 'ar' ? 'rtl' : 'ltr');
-    };
-
-    const [isEnglishVisible, setIsEnglishVisible] = useState(false);
-    const [isArabicVisible, setIsArabicVisible] = useState(true);
-
-    const vanishEnglishButton = () => {
-        setIsEnglishVisible(false);
-        setIsArabicVisible(true);
-    };
-
-    const vanishArabicButton = () => {
-        setIsArabicVisible(false);
-        setIsEnglishVisible(true);
-    };
-
-    const handleEnglishClick = () => {
-        changeLanguage('en');
-        vanishEnglishButton();
-    };
-
-    const handleArabicClick = () => {
-        changeLanguage('ar');
-        vanishArabicButton();
-    };
-
-
-
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    const selectedLanguage = event.target.value as string;
+    i18n.changeLanguage(selectedLanguage);
+    localStorage.setItem('language', selectedLanguage);
+  };
 
   return (
-    <Box>
-        {isEnglishVisible && <Button variant='contained' onClick={() => handleEnglishClick()}>English</Button>}
-        {isArabicVisible && <Button variant='contained' onClick={() => handleArabicClick()}>العربية</Button>}
-      </Box>
-  )
-}
+    <Select
+      value={i18n.language}
+      onChange={handleChange}
+      label="Language"
+    >
+      <MenuItem value="en">English</MenuItem>
+      <MenuItem value="ar">Arabic</MenuItem>
+      {/* Add more languages as needed */}
+    </Select>
+  );
+};
 
-export default LanguagesButtons
+export default LanguageSelector;

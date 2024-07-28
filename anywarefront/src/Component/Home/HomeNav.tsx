@@ -62,6 +62,7 @@ const Navbar =()=>{
                 <Typography>Welcom</Typography>
 
                 </UserBox>
+                <LanguageSelector/>
                 
 
                 </StyledToolbar> 

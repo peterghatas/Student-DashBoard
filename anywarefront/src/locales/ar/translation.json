@@ -7,5 +7,12 @@
     "login_failed": "فشل تسجيل الدخول: {{message}}",
     "login_failed_unexpected": "فشل تسجيل الدخول: حدث خطأ غير متوقع",
     "welcome": "أهلا بك",
-    "register": "تسجيل"
+    "register": "تسجيل",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "invalidEmail": "عنوان بريد إلكتروني غير صالح",
+    "registrationSuccess": "تم التسجيل بنجاح",
+    "registrationFailed": "فشل التسجيل",
+    "unexpectedError": "حدث خطأ غير متوقع"
   }

@@ -26,7 +26,7 @@ const Register: React.FC = () => {
     event.preventDefault();
 
     if (!validateEmail(email)) {
-      setEmailError(t('Invalid email address'));
+      setEmailError(t('invalidEmail'));
       return;
     }
 
@@ -34,14 +34,14 @@ const Register: React.FC = () => {
       const response = await register(name, phone, email, password);
 
       if (response.status === 201) {
-        setMessage(t('Registration successful'));
+        setMessage(t('registrationSuccess'));
         navigate('/login');
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setMessage(t('Registration failed') + ': ' + (error.response?.data || error.message));
+        setMessage(t('registrationFailed') + ': ' + (error.response?.data || error.message));
       } else {
-        setMessage(t('Registration failed') + ': ' + t('An unexpected error occurred'));
+        setMessage(t('registrationFailed') + ': ' + t('unexpectedError'));
       }
     }
   };
@@ -62,7 +62,7 @@ const Register: React.FC = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          {t('Register')}
+          {t('register')}
         </Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
@@ -71,7 +71,7 @@ const Register: React.FC = () => {
             required
             fullWidth
             id="name"
-            label={t('Name')}
+            label={t('name')}
             name="name"
             autoComplete="name"
             autoFocus
@@ -84,7 +84,7 @@ const Register: React.FC = () => {
             required
             fullWidth
             id="email"
-            label={t('Email Address')}
+            label={t('email')}
             name="email"
             autoComplete="email"
             value={email}
@@ -101,7 +101,7 @@ const Register: React.FC = () => {
             required
             fullWidth
             id="phone"
-            label={t('Phone Number')}
+            label={t('phone')}
             name="phone"
             autoComplete="tel"
             value={phone}
@@ -113,7 +113,7 @@ const Register: React.FC = () => {
             required
             fullWidth
             name="password"
-            label={t('Password')}
+            label={t('password')}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -127,7 +127,7 @@ const Register: React.FC = () => {
             color="primary"
             sx={{ mt: 3, mb: 2 }}
           >
-            {t('Register')}
+            {t('register')}
           </Button>
           <Button
             onClick={() => navigate('/')}
@@ -136,7 +136,7 @@ const Register: React.FC = () => {
             color="primary"
             sx={{ mt: 1, mb: 2 }}
           >
-            {t('Back')}
+            {t('back')}
           </Button>
           {message && (
             <Alert severity={message.includes(t('successful')) ? 'success' : 'error'}>{message}</Alert>

@@ -17,12 +17,13 @@ const resources = {
     translation: translationAR,
   },
 };
+const savedLanguage = localStorage.getItem('language') || 'en';
 
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', 
+    lng: savedLanguage, 
     fallbackLng: 'es', 
     interpolation: {
       escapeValue: false, 
