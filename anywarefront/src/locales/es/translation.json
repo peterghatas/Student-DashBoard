@@ -1,0 +1,9 @@
+{
+    "login": "Iniciar sesión",
+    "email_address": "Dirección de correo electrónico",
+    "password": "Contraseña",
+    "back": "Volver",
+    "login_success": "Inicio de sesión exitoso",
+    "login_failed": "Error de inicio de sesión: {{message}}",
+    "login_failed_unexpected": "Error de inicio de sesión: Ocurrió un error inesperado"
+  }

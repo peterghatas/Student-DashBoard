@@ -1,56 +1,68 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Box, Button, Container, TextField, Typography, Alert } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { loginUser } from '../../API/UserLogin';
 import { useNavigate } from 'react-router-dom';
+import LanguageSelector from '../LanguageSelector';
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
+  const [emailError, setEmailError] = useState<string>('');
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    if (!validateEmail(email)) {
+      setEmailError(t('invalid_email'));
+      return;
+    }
+
     try {
-      const response = await loginUser(email, password);
+      const response = await loginUser(email, password); // Email is already converted to lowercase in the onChange handler
 
       if (response.status === 200) {
         localStorage.setItem('token', response.data);
-        setMessage('Login successful');
+        setMessage(t('login_success'));
         navigate('/Dash');
       }
-
+      
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        // Axios error
-        console.log(error.response);
-        setMessage('Login failed: ' + (error.response?.data || error.message));
+        setMessage(t('login_failed', { message: error.response?.data || error.message }));
       } else {
-        // Other errors
-        setMessage('Login failed: An unexpected error occurred');
+        setMessage(t('login_failed_unexpected'));
       }
     }
   };
 
+  const validateEmail = (email: string) => {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return emailPattern.test(email);
+  };
+
   return (
     <Container component="main" maxWidth="xs">
+      
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           marginTop: 8,
-          bgcolor: 'rgba(0, 0, 0, 0.1)', // Darker and more opaque background
-          backdropFilter: 'blur(10px)', // Blur effect
-          borderRadius: 2, // Rounded corners
-          padding: 3, // Padding inside the Box
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.5)', // Darker shadow for depth
+          bgcolor: 'rgba(0, 0, 0, 0.1)',
+          backdropFilter: 'blur(10px)',
+          borderRadius: 2,
+          padding: 3,
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.5)',
         }}
       >
         <Typography component="h1" variant="h5">
-          Login
+          {t('login')}
         </Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
@@ -59,12 +71,17 @@ const Login: React.FC = () => {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label={t('email_address')}
             name="email"
             autoComplete="email"
             autoFocus
             value={email}
-            onChange={(e) => setEmail(e.target.value.toLowerCase())} // Convert to lowercase
+            onChange={(e) => {
+              setEmail(e.target.value.toLowerCase());
+              setEmailError('');
+            }}
+            error={!!emailError}
+            helperText={emailError}
           />
           <TextField
             variant="outlined"
@@ -72,7 +89,7 @@ const Login: React.FC = () => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label={t('password')}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -86,7 +103,7 @@ const Login: React.FC = () => {
             color="primary"
             sx={{ mt: 3, mb: 2 }}
           >
-            Login
+            {t('login')}
           </Button>
           <Button
             onClick={() => navigate('/')}
@@ -95,10 +112,10 @@ const Login: React.FC = () => {
             color="primary"
             sx={{ mt: 1, mb: 1 }}
           >
-            Back
+            {t('back')}
           </Button>
           {message && (
-            <Alert severity={message.includes('successful') ? 'success' : 'error'}>{message}</Alert>
+            <Alert severity={message.includes(t('login_success')) ? 'success' : 'error'}>{message}</Alert>
           )}
         </Box>
       </Box>

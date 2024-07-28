@@ -1,0 +1,9 @@
+{
+    "login": "تسجيل الدخول",
+    "email_address": "عنوان البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "back": "العودة",
+    "login_success": "تم تسجيل الدخول بنجاح",
+    "login_failed": "فشل تسجيل الدخول: {{message}}",
+    "login_failed_unexpected": "فشل تسجيل الدخول: حدث خطأ غير متوقع"
+  }

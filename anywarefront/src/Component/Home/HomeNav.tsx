@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import App from '../../../src/App';
 import { AppBar, Avatar, Badge, Box, InputBase, Menu, MenuItem, styled, Toolbar, Typography } from "@mui/material";
 import { Mail, Notifications, Pets } from "@mui/icons-material";
+import LanguageSelector from "../LanguageSelector";
 
 const StyledToolbar = styled(Toolbar)({
 
@@ -61,6 +62,7 @@ const Navbar =()=>{
                 <Typography>Welcom</Typography>
 
                 </UserBox>
+                
 
                 </StyledToolbar> 
           
