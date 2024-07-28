@@ -28,10 +28,10 @@ const AnnouncementCom = () => {
         borderRadius: 2,
         padding: 2,
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-        flexWrap: 'wrap', // Allows items to wrap to the next line if needed
+        flexWrap: 'wrap', 
       }}
     >
-      <Box sx={{ width: { xs: '100%', md: '18%' } }}>
+      <Box sx={{ width: { xs: '100%', md: '20%' } }}>
         <Box display="flex" flexDirection="row">
           <Avatar
             sx={{ width: '30px', height: '30px' }}
@@ -48,7 +48,7 @@ const AnnouncementCom = () => {
         </Box>
       </Box>
       <Divider orientation="vertical" flexItem sx={{ display: { xs: 'none', md: 'block' } }} />
-      <Box sx={{ marginLeft: { xs: '0', md: '7%' }, maxWidth: 500, width: { xs: '100%', md: '30%' } }}>
+      <Box sx={{ marginLeft: { xs: '0', md: '7%' }, maxWidth: 500, width: { xs: '100%', md: '50%' } }}>
         <Typography sx={{ fontSize: '18px', fontFamily: 'serif' }}>{props.announcement.discussion}</Typography>
       </Box>
     </Box>

@@ -14,6 +14,7 @@ const Dash = () => {
     <Box   >
       <Navbar/>
       <Sidebar/>
+      
       <Box  sx={{display:{xs:"none",sm:"block"}}}>
 
       <Stack bgcolor='#EEEDEB'   sx={{position:'relative', left:'11%' , width:{xs:'100%',sm:'89%'}}} direction="row" spacing={1} >

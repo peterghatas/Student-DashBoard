@@ -23,7 +23,7 @@ const Login: React.FC = () => {
     }
 
     try {
-      const response = await loginUser(email, password); // Email is already converted to lowercase in the onChange handler
+      const response = await loginUser(email, password); 
 
       if (response.status === 200) {
         localStorage.setItem('token', response.data);
@@ -47,7 +47,7 @@ const Login: React.FC = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      
+       
       <Box
         sx={{
           display: 'flex',

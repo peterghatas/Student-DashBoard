@@ -3,8 +3,11 @@ import axios from 'axios';
 import { Box, Button, Container, TextField, Typography, Alert } from '@mui/material';
 import { register } from '../../API/UserLogin';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../LanguageSelector';
 
 const Register: React.FC = () => {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -23,22 +26,22 @@ const Register: React.FC = () => {
     event.preventDefault();
 
     if (!validateEmail(email)) {
-      setEmailError('Invalid email address');
+      setEmailError(t('Invalid email address'));
       return;
     }
 
     try {
       const response = await register(name, phone, email, password);
 
-      if (response.status == 201) {
-        setMessage('Registration successful');
+      if (response.status === 201) {
+        setMessage(t('Registration successful'));
         navigate('/login');
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setMessage('Registration failed: ' + (error.response?.data || error.message));
+        setMessage(t('Registration failed') + ': ' + (error.response?.data || error.message));
       } else {
-        setMessage('Registration failed: An unexpected error occurred');
+        setMessage(t('Registration failed') + ': ' + t('An unexpected error occurred'));
       }
     }
   };
@@ -51,15 +54,15 @@ const Register: React.FC = () => {
           flexDirection: 'column',
           alignItems: 'center',
           marginTop: 8,
-          bgcolor: 'rgba(0, 0, 0, 0.1)', // Darker and more opaque background
-          backdropFilter: 'blur(10px)', // Blur effect
-          borderRadius: 2, // Rounded corners
-          padding: 3, // Padding inside the Box
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.5)', // Darker shadow for depth
+          bgcolor: 'rgba(0, 0, 0, 0.1)',
+          backdropFilter: 'blur(10px)',
+          borderRadius: 2,
+          padding: 3,
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.5)',
         }}
       >
         <Typography component="h1" variant="h5">
-          Register
+          {t('Register')}
         </Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
@@ -68,25 +71,25 @@ const Register: React.FC = () => {
             required
             fullWidth
             id="name"
-            label="Name"
+            label={t('Name')}
             name="name"
             autoComplete="name"
             autoFocus
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-       <TextField
+          <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label={t('Email Address')}
             name="email"
             autoComplete="email"
             value={email}
             onChange={(e) => {
-              setEmail(e.target.value.toLowerCase()); // Convert email to lowercase
+              setEmail(e.target.value.toLowerCase());
               setEmailError('');
             }}
             error={!!emailError}
@@ -98,7 +101,7 @@ const Register: React.FC = () => {
             required
             fullWidth
             id="phone"
-            label="Phone Number"
+            label={t('Phone Number')}
             name="phone"
             autoComplete="tel"
             value={phone}
@@ -110,7 +113,7 @@ const Register: React.FC = () => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label={t('Password')}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -124,7 +127,7 @@ const Register: React.FC = () => {
             color="primary"
             sx={{ mt: 3, mb: 2 }}
           >
-            Register
+            {t('Register')}
           </Button>
           <Button
             onClick={() => navigate('/')}
@@ -133,10 +136,10 @@ const Register: React.FC = () => {
             color="primary"
             sx={{ mt: 1, mb: 2 }}
           >
-            Back
+            {t('Back')}
           </Button>
           {message && (
-            <Alert severity={message.includes('successful') ? 'success' : 'error'}>{message}</Alert>
+            <Alert severity={message.includes(t('successful')) ? 'success' : 'error'}>{message}</Alert>
           )}
         </Box>
       </Box>

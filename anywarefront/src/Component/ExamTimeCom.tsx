@@ -7,15 +7,15 @@ function ExamTimeCom() {
     <Grid container justifyContent="center" bgcolor='#EEEDEB' sx={{ padding: 2 }}>
       <Card sx={{
         width: {
-          xs: '100%', // Full width on extra-small screens
-          sm: '100%',  // 80% width on small screens
-          md: '100%',  // 70% width on medium screens
-          lg: '100%',  // 60% width on large screens
-          xl: '100%'   // 50% width on extra-large screens
+          xs: '100%', 
+          sm: '100%',  
+          md: '100%',  
+          lg: '100%',  
+          xl: '100%'   
         },
         maxHeight: 500,
-        margin: 'auto', // Center the card horizontally
-        boxShadow: 3 // Add some shadow for better visual appeal
+        margin: 'auto', 
+        boxShadow: 3 
       }}>
         <CardMedia
           component="img"

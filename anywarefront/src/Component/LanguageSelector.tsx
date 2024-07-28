@@ -1,29 +1,48 @@
-import React from 'react';
+import { Box, Button } from '@mui/material'
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Box, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
-const LanguageSelector: React.FC = () => {
-  const { i18n } = useTranslation();
+const LanguagesButtons = () => {
 
-  const handleChange = (event: SelectChangeEvent<string>) => {
-    i18n.changeLanguage(event.target.value);
-  };
+    const { i18n } = useTranslation();
+
+    const changeLanguage = (lng: string) => {
+        i18n.changeLanguage(lng);
+        document.body.setAttribute('dir', lng === 'ar' ? 'rtl' : 'ltr');
+    };
+
+    const [isEnglishVisible, setIsEnglishVisible] = useState(false);
+    const [isArabicVisible, setIsArabicVisible] = useState(true);
+
+    const vanishEnglishButton = () => {
+        setIsEnglishVisible(false);
+        setIsArabicVisible(true);
+    };
+
+    const vanishArabicButton = () => {
+        setIsArabicVisible(false);
+        setIsEnglishVisible(true);
+    };
+
+    const handleEnglishClick = () => {
+        changeLanguage('en');
+        vanishEnglishButton();
+    };
+
+    const handleArabicClick = () => {
+        changeLanguage('ar');
+        vanishArabicButton();
+    };
+
+
+
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
-      <Select
-        value={i18n.language}
-        onChange={handleChange}
-        displayEmpty
-        inputProps={{ 'aria-label': 'Without label' }}
-      >
-        <MenuItem value="en">English</MenuItem>
-        <MenuItem value="es">Español</MenuItem>
-        <MenuItem value="ar">Arabic</MenuItem>
-        {/* Add more languages as needed */}
-      </Select>
-    </Box>
-  );
-};
+    <Box>
+        {isEnglishVisible && <Button variant='contained' onClick={() => handleEnglishClick()}>English</Button>}
+        {isArabicVisible && <Button variant='contained' onClick={() => handleArabicClick()}>العربية</Button>}
+      </Box>
+  )
+}
 
-export default LanguageSelector;
+export default LanguagesButtons
